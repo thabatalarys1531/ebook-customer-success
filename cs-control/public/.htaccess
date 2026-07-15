@@ -1,2 +1,14 @@
+# Reabre o acesso a esta pasta (public/) caso o projeto inteiro tenha sido
+# colocado dentro de public_html em vez de usado como Document Root de um
+# subdomínio — sem isso, o .htaccess de bloqueio em cs-control/.htaccess
+# (que protege app/ e database/) também bloquearia esta pasta por engano.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
+
 Options -Indexes
 DirectoryIndex index.php
