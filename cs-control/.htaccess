@@ -1,0 +1,10 @@
+# Trava de segurança: se por engano o domínio apontar para a raiz do projeto
+# (em vez da pasta /public), este arquivo bloqueia o acesso a tudo.
+# O document root do site deve SEMPRE apontar para a pasta /public.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
