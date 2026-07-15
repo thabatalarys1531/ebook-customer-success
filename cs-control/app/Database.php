@@ -20,6 +20,11 @@ class Database
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
+
+            // Muitos servidores cPanel rodam com o relógio em UTC. Sem isso, NOW()/CURDATE()
+            // do MySQL ficam horas à frente do horário de Brasília usado pelo PHP, e cards
+            // como "Reuniões hoje" contam errado perto da virada do dia.
+            self::$instance->exec("SET time_zone = '-03:00'");
         }
 
         return self::$instance;

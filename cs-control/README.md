@@ -97,6 +97,11 @@ cs-control/
   .env.example    Modelo do arquivo de configuração (copie para .env)
 ```
 
+O visual usa Tailwind CSS já compilado em `public/assets/css/tailwind.css` — não
+depende de nenhum CDN externo nem de Node/npm para funcionar. Se um dia
+adicionarmos classes novas que não existam nesse arquivo, ele precisa ser
+recompilado (isso é trabalho meu, não seu).
+
 ## Segurança
 
 - Nunca suba o arquivo `.env` para o Git nem para um repositório público —
